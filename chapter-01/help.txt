@@ -1,0 +1,19 @@
+// Ways to define things
+// In practice the first two are generally best.
+/*
+    s := ""
+    Can only be used in a function.
+*/
+/*
+    var _ string
+    Relies on default initialization to the zero value for strings aka ""
+*/
+/*
+    var _ = ""
+    Rarely used except when declaring multiple variables
+*/
+
+/*
+    var _ string = ""
+    Is explicit about the variable's type, which is redundant.. but necessary in cases where they are not of the same type
+*/
