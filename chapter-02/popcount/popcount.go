@@ -18,3 +18,30 @@ func PopCount(x uint64) int {
         pc[byte(x>>(6*8))] +
         pc[byte(x>>(7*8))])
 }
+
+func PopCountPerf(x uint64) int {
+    var y byte
+    for i := 0; i < 8; i++ {
+        y += pc[byte(x>>(i*8))]
+    }
+    return int(y)
+}
+
+func PopCountShifty(x uint64) int {
+    n := 0
+    for i := uint(0); i < 64; i++ {
+        if x&(1<<i) != 0 {
+            n++
+        }
+    }
+    return n
+}
+
+func PopCountClearing(x uint64) int {
+    n := 0
+    for x != 0 {
+        x = x & (x - 1)
+        n++
+    }
+    return n
+}
